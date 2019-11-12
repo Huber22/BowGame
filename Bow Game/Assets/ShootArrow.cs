@@ -17,7 +17,8 @@ public class ShootArrow : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0)){
-            Instantiate(arrowPrefab, firePoint.transform.position, Quaternion.LookRotation(Camera.main.transform.forward));
+            GameObject arrow= Instantiate(arrowPrefab, firePoint.transform.position, Quaternion.LookRotation(Camera.main.transform.forward));
+            arrow.GetComponent<Arrow>().force = arrowforce;
         }
     }
 }

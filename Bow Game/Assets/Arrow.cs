@@ -6,6 +6,7 @@ public class Arrow : MonoBehaviour
 {
     public bool collided = false;
     public Rigidbody rb;
+    public float force;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +14,7 @@ public class Arrow : MonoBehaviour
 
         if (rb != null)
         {
-            rb.AddForce(Camera.main.transform.forward * 1000);
+            rb.AddForce(Camera.main.transform.forward * force);
             rb.AddForce(Camera.main.transform.up * 100);
         }
     }
@@ -40,4 +41,10 @@ public class Arrow : MonoBehaviour
             collided = true;
         }
     }
+ /*   public void ApplyForce(float F)
+    {
+        force = F;
+
+
+    }*/
 }
