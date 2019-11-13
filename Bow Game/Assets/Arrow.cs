@@ -7,6 +7,8 @@ public class Arrow : MonoBehaviour
     public bool collided = false;
     public Rigidbody rb;
     public float force;
+    [SerializeField] private float baseDamage;
+    public float addedDamage;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,7 @@ public class Arrow : MonoBehaviour
         else
         {
             this.transform.forward = this.transform.forward;
+            Destroy(this.gameObject, 30f);
         }
     }
 
@@ -37,8 +40,17 @@ public class Arrow : MonoBehaviour
       
         if (collision.collider.tag != "Player")
         {
-            Debug.Log("collided with" + collision.collider.name);
+
             collided = true;
+        }
+        if (collision.collider.tag == "Enemy")
+        {
+            
+            collision.collider.GetComponent<enemy>().TakeDamage(addedDamage + baseDamage);
+            this.transform.parent = collision.transform;
+            rb.isKinematic = true;
+            addedDamage = 0;
+            baseDamage = 0;
         }
     }
  /*   public void ApplyForce(float F)

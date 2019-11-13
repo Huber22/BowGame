@@ -9,11 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9027899713641013839}
-  - component: {fileID: 1757910996579155624}
-  - component: {fileID: 460099184428551444}
-  - component: {fileID: 4900354779909389112}
   m_Layer: 0
-  m_Name: Arrow 1 1
+  m_Name: DisplayArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +24,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385902331795341092}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.10021, y: 1.215, z: -11.065}
-  m_LocalScale: {x: 0.032871, y: 0.0065741995, z: 1.31484}
+  m_LocalPosition: {x: -0.099937, y: 1.215, z: -11.081}
+  m_LocalScale: {x: 0.0396715, y: 0.007934299, z: 1.58686}
   m_Children:
   - {fileID: 5930084816756881285}
   - {fileID: 6452345350924478634}
@@ -36,53 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1757910996579155624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385902331795341092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a3e168d3824f243ba6b17059ca8ba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collided: 0
-  rb: {fileID: 460099184428551444}
-  force: 0
-  baseDamage: 1
-  addedDamage: 0
---- !u!54 &460099184428551444
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385902331795341092}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.5
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 3
---- !u!136 &4900354779909389112
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385902331795341092}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1994721841241521725
 GameObject:
   m_ObjectHideFlags: 0
