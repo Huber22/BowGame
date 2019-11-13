@@ -19,7 +19,7 @@ public class ShootArrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        arrowforce = 0;
+        arrowforce = 20;
     }
 
     // Update is called once per frame
@@ -44,7 +44,7 @@ public class ShootArrow : MonoBehaviour
             GameObject arrow = Instantiate(arrowPrefab, firePoint.transform.position, Quaternion.LookRotation(Camera.main.transform.forward));
             arrow.GetComponent<Arrow>().force = arrowforce;
             arrow.GetComponent<Arrow>().addedDamage = _damage;
-            arrowforce = 0;
+            arrowforce = 20;
             nextfire = Time.time+fireRate;
             displayArrow.SetActive(false);
         }

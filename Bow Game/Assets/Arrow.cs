@@ -38,7 +38,7 @@ public class Arrow : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
       
-        if (collision.collider.tag != "Player")
+        if (collision.collider.tag != "Player")//TODO if enemy walks over an arrow they will still take damage once
         {
 
             collided = true;
