@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _health;
     public float healDelay=2f;
     private float nextHeal;
-    public float healRate=1f;
+    public float healRate=10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,14 +18,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time >= nextHeal&&_health<=maxHealth)
+        if(Time.time >= nextHeal&&_health<maxHealth)
         {
-            //regen health
+            _health += healRate * Time.deltaTime;
+            Debug.Log(_health);
+        }
+        if (_health <= 0)
+        {
+            Die();
         }
     }
     public void takeDamage(float damage)
     {
         _health = _health - damage;
+        Debug.Log(_health);
         nextHeal = Time.time + healDelay;
+    }
+    void Die()
+    {
+        Destroy(this.gameObject);
     }
 }

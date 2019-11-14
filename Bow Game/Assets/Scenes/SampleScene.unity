@@ -1226,6 +1226,21 @@ PrefabInstance:
       propertyPath: runBuildUpSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1119918366802446337, guid: 4f25d95578263da439fd4eec65bf65d5,
+        type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119918366802446337, guid: 4f25d95578263da439fd4eec65bf65d5,
+        type: 3}
+      propertyPath: healDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119918366802446337, guid: 4f25d95578263da439fd4eec65bf65d5,
+        type: 3}
+      propertyPath: healRate
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f25d95578263da439fd4eec65bf65d5, type: 3}
 --- !u!1001 &5204986787733011468
@@ -1309,6 +1324,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attackRate
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204986785972717019, guid: 6f93222f46768a04cb5a5d3d7d8c888d,
+        type: 3}
+      propertyPath: attackDamage
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f93222f46768a04cb5a5d3d7d8c888d, type: 3}

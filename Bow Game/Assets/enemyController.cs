@@ -7,6 +7,7 @@ public class enemyController : MonoBehaviour
 {
     public NavMeshAgent agent;
     public GameObject target;
+    public bool Melee;
     public float attackRate;
     public float attackDamage;
     public float attackRange=3f;
@@ -59,6 +60,7 @@ public class enemyController : MonoBehaviour
     }
     void Attack()
     {
+
         if (Vector3.Distance(this.transform.position, target.transform.position) <= attackRange&& Time.time>= _nextattack)
         {
             target.GetComponent<Player>().takeDamage(attackDamage);
