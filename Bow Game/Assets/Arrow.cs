@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+
     public bool collided = false;
     public Rigidbody rb;
     public float force;
@@ -37,26 +38,25 @@ public class Arrow : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-      
-        if (collision.collider.tag != "Player")//TODO if enemy walks over an arrow they will still take damage once
-        {
 
-            collided = true;
-        }
-        if (collision.collider.tag == "Enemy")
-        {
-            
-            collision.collider.GetComponent<enemy>().TakeDamage(addedDamage + baseDamage);
-            this.transform.parent = collision.transform;
-            rb.isKinematic = true;
-            addedDamage = 0;
-            baseDamage = 0;
-        }
+
+            if (collision.collider.tag != "Player")//TODO if enemy walks over an arrow they will still take damage once
+            {
+
+                collided = true;
+            this.GetComponent<TrailRenderer>().emitting=false;
+            }
+            if (collision.collider.tag == "Enemy")
+            {
+                
+                collision.collider.GetComponent<enemy>().TakeDamage(addedDamage + baseDamage);
+                this.transform.parent = collision.transform;
+            Destroy(rb);
+                addedDamage = 0;
+                baseDamage = 0;
+
+            }
+        
     }
- /*   public void ApplyForce(float F)
-    {
-        force = F;
 
-
-    }*/
 }

@@ -24,4 +24,5 @@ public class enemy : MonoBehaviour
         Debug.Log(damage);
         health = health - damage;
     }
+
 }

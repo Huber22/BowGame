@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 460099184428551444}
   - component: {fileID: 4900354779909389112}
   m_Layer: 0
-  m_Name: fire arrow
-  m_TagString: Untagged
+  m_Name: Fire arrow
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   collided: 0
   rb: {fileID: 460099184428551444}
   force: 0
-  baseDamage: 5
+  baseDamage: 1
   addedDamage: 0
 --- !u!54 &460099184428551444
 Rigidbody:
@@ -79,10 +79,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.51153624
+  m_Height: 0.0473401
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.14076568, z: 0.49887526}
 --- !u!1 &1994721841241521725
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 5930084816756881285}
   - component: {fileID: 5459344721968376032}
   - component: {fileID: 7883785976148689422}
+  - component: {fileID: 3275962950699989031}
   m_Layer: 0
   m_Name: shaft
   m_TagString: Untagged
@@ -161,6 +162,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &3275962950699989031
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994721841241521725}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000001
+  m_Height: 1.0391332
+  m_Direction: 2
+  m_Center: {x: 0.0000000566653, y: 0, z: -0.09934833}
 --- !u!1 &4789063860125192135
 GameObject:
   m_ObjectHideFlags: 0
