@@ -39,7 +39,7 @@ public class ShootArrow : MonoBehaviour
             
             
         }
-        if (Input.GetMouseButtonUp(0) && arrowforce > 0){
+        if (Input.GetMouseButtonUp(0) && arrowforce > 20f){
 
             GameObject arrow = Instantiate(arrowPrefab, firePoint.transform.position, Quaternion.LookRotation(Camera.main.transform.forward));
             arrow.GetComponent<Arrow>().force = arrowforce;

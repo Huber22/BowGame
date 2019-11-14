@@ -40,20 +40,26 @@ public class Arrow : MonoBehaviour
     {
 
 
-            if (collision.collider.tag != "Player")//TODO if enemy walks over an arrow they will still take damage once
+            if (collision.collider.tag != "Player"&& collision.collider.tag != "Enemy")//TODO if enemy walks over an arrow they will still take damage once
             {
 
                 collided = true;
             this.GetComponent<TrailRenderer>().emitting=false;
             }
-            if (collision.collider.tag == "Enemy")
+            if (collision.collider.tag == "Enemy"&& collided!=true)
             {
                 
-                collision.collider.GetComponent<enemy>().TakeDamage(addedDamage + baseDamage);
+                collision.collider.GetComponent<enemystats>().TakeDamage(addedDamage + baseDamage);
+            if (collision.collider.GetComponent<enemyController>() != null)
+            {
+                collision.collider.GetComponent<enemyController>().SetTarget();
+            }
                 this.transform.parent = collision.transform;
-            Destroy(rb);
+                this.GetComponent<TrailRenderer>().emitting = false;
+                Destroy(rb);
                 addedDamage = 0;
                 baseDamage = 0;
+                collided = true;
 
             }
         
