@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public Slider Hp;
     public float maxHealth;
     [SerializeField] private float _health;
     public float healDelay=2f;
@@ -18,10 +20,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time >= nextHeal&&_health<maxHealth)
+        Hp.maxValue = maxHealth;
+        Hp.value = _health;
+        if (Time.time >= nextHeal&&_health<maxHealth)
         {
             _health += healRate * Time.deltaTime;
-            Debug.Log(_health);
+           
         }
         if (_health <= 0)
         {
@@ -38,4 +42,5 @@ public class Player : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
 }

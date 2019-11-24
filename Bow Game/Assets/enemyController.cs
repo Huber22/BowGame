@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,10 +10,14 @@ public class enemyController : MonoBehaviour
     public GameObject target;
     public bool Melee;
     public float attackRate;
-    public float attackDamage;
+   // public float attackDamage;
     public float attackRange=3f;
+    public float stopDistance = 2.5f;
+    public float stopDistanceRanged = 6f;
+    public float rangedAttackRange = 10f;
     private float _nextattack;
     public bool Aggro;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +28,47 @@ public class enemyController : MonoBehaviour
     void Update()
     {
 
-        Movement();
-        Attack();
+        if (Melee == true)
+        {
+            Movement();
+            Attack();
+        }
+        else if (Melee == false)
+        {
+            RangedMovement();
+            RangedAttack();
+        }
 
 
+    }
+
+    private void RangedAttack()
+    {
+        if (Vector3.Distance(this.transform.position, target.transform.position) <= rangedAttackRange && Time.time >= _nextattack)
+        {
+            Debug.Log("ranged attack");
+            //raycast
+
+        }
+    }
+
+    private void RangedMovement()
+    {
+        if (Vector3.Distance(this.transform.position, target.transform.position) <= stopDistanceRanged)
+        {
+            agent.isStopped = true;
+           
+        }
+        else
+        {
+            agent.isStopped = false;
+        }
+
+        if (Aggro == true)
+        {
+            agent.SetDestination(target.transform.position);
+            transform.LookAt(target.transform.position);
+        }
     }
 
     void OnTriggerEnter(Collider col)
@@ -43,7 +85,7 @@ public class enemyController : MonoBehaviour
     }
     void Movement()
     {
-        if (Vector3.Distance(this.transform.position, target.transform.position) <= 2.5f)
+        if (Vector3.Distance(this.transform.position, target.transform.position) <= stopDistance)
         {
             agent.isStopped = true;
 
@@ -56,6 +98,7 @@ public class enemyController : MonoBehaviour
         if (Aggro == true)
         {
             agent.SetDestination(target.transform.position);
+            transform.LookAt(target.transform.position);
         }
     }
     void Attack()
@@ -63,7 +106,9 @@ public class enemyController : MonoBehaviour
 
         if (Vector3.Distance(this.transform.position, target.transform.position) <= attackRange&& Time.time>= _nextattack)
         {
-            target.GetComponent<Player>().takeDamage(attackDamage);
+            
+            anim.SetTrigger("Attack");
+            //target.GetComponent<Player>().takeDamage(attackDamage);
 
             _nextattack = Time.time + attackRate;
 

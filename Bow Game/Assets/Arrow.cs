@@ -8,11 +8,12 @@ public class Arrow : MonoBehaviour
     public bool collided = false;
     public Rigidbody rb;
     public float force;
-    [SerializeField] private float baseDamage;
+    public float baseDamage;
     public float addedDamage;
     // Start is called before the first frame update
     void Start()
     {
+        baseDamage = 1f;
         rb = this.gameObject.GetComponent<Rigidbody>();
 
         if (rb != null)

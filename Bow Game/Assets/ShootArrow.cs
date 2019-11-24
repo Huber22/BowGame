@@ -9,9 +9,9 @@ public class ShootArrow : MonoBehaviour
     public float arrowforce;
     public float drawRate;
     public float fireRate;
-    public float nextfire;
-    [SerializeField]private float _maxDamage;
-    [SerializeField] private float _damage;
+    private float _nextfire;
+    private float _maxDamage;
+    private float _damage;
     public GameObject arrowPrefab;
     public GameObject firePoint;
     public Slider forceSlider;
@@ -28,13 +28,13 @@ public class ShootArrow : MonoBehaviour
         _maxDamage = maxForce / 100f;
         forceSlider.maxValue = maxForce;
         forceSlider.value = arrowforce;
-        if (Time.time >= nextfire)
+        if (Time.time >= _nextfire)
         {
             displayArrow.SetActive(true);
         }
-        if (Input.GetMouseButton(0)&& arrowforce <= maxForce&& Time.time>=nextfire){
+        if (Input.GetMouseButton(0)&& arrowforce <= maxForce&& Time.time>=_nextfire){
 
-            arrowforce=arrowforce+drawRate;
+            arrowforce=arrowforce+drawRate*Time.deltaTime;
             _damage =arrowforce / 100f;
             
             
@@ -45,8 +45,25 @@ public class ShootArrow : MonoBehaviour
             arrow.GetComponent<Arrow>().force = arrowforce;
             arrow.GetComponent<Arrow>().addedDamage = _damage;
             arrowforce = 20;
-            nextfire = Time.time+fireRate;
+            _nextfire = Time.time+fireRate;
             displayArrow.SetActive(false);
+
         }
+    }
+    void upgradeArrow()
+    {
+        //arrowPrefab.GetComponent<Arrow>().baseDamage++;
+    }
+    void upgradeDraw()
+    {
+        drawRate = drawRate + 5;
+    }
+    void upgradeForce()
+    {
+        maxForce = maxForce + 200;
+    }
+    void upgradeFireRate()
+    {
+        fireRate = fireRate - .2f;
     }
 }

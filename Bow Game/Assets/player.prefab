@@ -393,6 +393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4e68cef5e84b24c9575c42dbfec870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  _health: 0
+  healDelay: 2
+  healRate: 1
 --- !u!1 &1277575780624168974
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,8 +499,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxForce: 500
   arrowforce: 100
-  drawRate: 5
-  fireRate: 2
+  drawRate: 10
+  fireRate: 2.5
   nextfire: 0
   _maxDamage: 0
   _damage: 0
