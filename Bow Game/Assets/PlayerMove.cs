@@ -8,7 +8,8 @@ public class PlayerMove : MonoBehaviour {
     [SerializeField] private string horizontalInputName;
     [SerializeField] private string verticalInputName;
 
-    [SerializeField] private float walkSpeed, runSpeed;
+    public float walkSpeed;
+    [SerializeField] private float runSpeed;
     [SerializeField] private float runBuildUpSpeed;
     [SerializeField] private KeyCode runKey;
 
@@ -21,12 +22,11 @@ public class PlayerMove : MonoBehaviour {
 
     //jump curve multiplier and key
     [SerializeField] private AnimationCurve jumpFallOff;
-    [SerializeField] private float jumpMultiplier;
+    public float jumpMultiplier;
     [SerializeField] private KeyCode jumpKey;
 
 
     private bool isJumping;
-
     private void Awake()
     {
         charController = GetComponent<CharacterController>();
@@ -34,7 +34,9 @@ public class PlayerMove : MonoBehaviour {
 
     private void Update()
     {
+        runSpeed = walkSpeed * 2;
         PlayerMovement();
+
     }
 
 

@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class enemystats : MonoBehaviour
 {
-    public GameManager gameManager;
+
+    public GameObject powerUp;
     [SerializeField] private float _maxhealth;
     [SerializeField ] private float _health;
-    [SerializeField] private float _chance;
+    [SerializeField] private int _chance;
     [SerializeField] private Slider _Hp;
     // Start is called before the first frame update
     void Start()
@@ -29,9 +30,10 @@ public class enemystats : MonoBehaviour
 
     void Die()
     {
+        Debug.Log("Die");
         if (Random.Range(1, _chance) == 1)
         {
-            gameManager.SpawnPowerup(this.gameObject);
+            GameObject power = Instantiate(powerUp, this.transform.position, Quaternion.identity);
         }
         Destroy(this.gameObject);
     }

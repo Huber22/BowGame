@@ -261,9 +261,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca9eeed0d079b94abc76610fb8be409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  powerUp: {fileID: 3919143725839534205, guid: 1e12f3c4682998f4c83f9ba6114b39e6, type: 3}
   _maxhealth: 15
   _health: 0
+  _chance: 2
   _Hp: {fileID: 5331220471019234108}
 --- !u!114 &5204986785972717019
 MonoBehaviour:

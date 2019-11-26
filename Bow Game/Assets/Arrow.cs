@@ -8,12 +8,12 @@ public class Arrow : MonoBehaviour
     public bool collided = false;
     public Rigidbody rb;
     public float force;
-    public float baseDamage;
+
     public float addedDamage;
     // Start is called before the first frame update
     void Start()
     {
-        baseDamage = 1f;
+
         rb = this.gameObject.GetComponent<Rigidbody>();
 
         if (rb != null)
@@ -47,22 +47,22 @@ public class Arrow : MonoBehaviour
                 collided = true;
             this.GetComponent<TrailRenderer>().emitting=false;
             }
-            if (collision.collider.tag == "Enemy"&& collided!=true)
-            {
-                
-                collision.collider.GetComponent<enemystats>().TakeDamage(addedDamage + baseDamage);
+        if (collision.collider.tag == "Enemy" && collided != true)
+        {
+
+            collision.collider.GetComponent<enemystats>().TakeDamage(addedDamage);
             if (collision.collider.GetComponent<enemyController>() != null)
             {
                 collision.collider.GetComponent<enemyController>().SetTarget();
             }
-                this.transform.parent = collision.transform;
-                this.GetComponent<TrailRenderer>().emitting = false;
-                Destroy(rb);
-                addedDamage = 0;
-                baseDamage = 0;
-                collided = true;
+            this.transform.parent = collision.transform;
+            this.GetComponent<TrailRenderer>().emitting = false;
+            Destroy(rb);
+            addedDamage = 0;
 
-            }
+            collided = true;
+
+        }
         
     }
 

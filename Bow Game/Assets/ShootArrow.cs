@@ -12,6 +12,7 @@ public class ShootArrow : MonoBehaviour
     private float _nextfire;
     private float _maxDamage;
     private float _damage;
+    public float baseDamage=1;
     public GameObject arrowPrefab;
     public GameObject firePoint;
     public Slider forceSlider;
@@ -20,6 +21,7 @@ public class ShootArrow : MonoBehaviour
     void Start()
     {
         arrowforce = 20;
+        
     }
 
     // Update is called once per frame
@@ -43,7 +45,7 @@ public class ShootArrow : MonoBehaviour
 
             GameObject arrow = Instantiate(arrowPrefab, firePoint.transform.position, Quaternion.LookRotation(Camera.main.transform.forward));
             arrow.GetComponent<Arrow>().force = arrowforce;
-            arrow.GetComponent<Arrow>().addedDamage = _damage;
+            arrow.GetComponent<Arrow>().addedDamage = _damage+baseDamage;
             arrowforce = 20;
             _nextfire = Time.time+fireRate;
             displayArrow.SetActive(false);

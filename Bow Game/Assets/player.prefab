@@ -332,11 +332,11 @@ MonoBehaviour:
   verticalInputName: Vertical
   walkSpeed: 5
   runSpeed: 10
-  runBuildUpSpeed: 7
+  runBuildUpSpeed: 2
   runKey: 304
   movementSpeed: 5
   slopeForce: 5
-  slopeForceRayLength: 5
+  slopeForceRayLength: 1.5
   jumpFallOff:
     serializedVersion: 2
     m_Curve:
@@ -361,7 +361,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jumpMultiplier: 2
+  jumpMultiplier: 5
   jumpKey: 32
 --- !u!143 &1277575780582227654
 CharacterController:
@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4e68cef5e84b24c9575c42dbfec870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hp: {fileID: 0}
   maxHealth: 100
   _health: 0
   healDelay: 2
@@ -501,9 +502,6 @@ MonoBehaviour:
   arrowforce: 100
   drawRate: 10
   fireRate: 2.5
-  nextfire: 0
-  _maxDamage: 0
-  _damage: 0
   arrowPrefab: {fileID: 385902331795341092, guid: 730d9cbf838d55a42a9ec7f3495ec3b2,
     type: 3}
   firePoint: {fileID: 1277575780826788230}
