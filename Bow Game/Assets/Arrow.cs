@@ -41,7 +41,7 @@ public class Arrow : MonoBehaviour
     {
 
 
-            if (collision.collider.tag != "Player"&& collision.collider.tag != "Enemy")//TODO if enemy walks over an arrow they will still take damage once
+            if (collision.collider.tag != "Player"&& collision.collider.tag != "Enemy"&&collision.collider.tag!="Arrow")
             {
 
                 collided = true;

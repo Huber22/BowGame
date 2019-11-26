@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviour
     public ShootArrow arrowUps;
     public Player healthUps;
     public PlayerMove moveUps;
+    private GameObject _displayEnemy;
+    public Slider recentHealth;
     public int maximumPowerups=0;
     public int totalPowerups = 0;
     public bool noMorePower=false;
@@ -72,7 +75,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(_displayEnemy!= null)
+        {
+            recentHealth.maxValue = _displayEnemy.GetComponent<enemystats>()._maxhealth;
+            recentHealth.value = _displayEnemy.GetComponent<enemystats>()._health;
+        }
     }
 
     public void PickupPowerup()
@@ -169,6 +176,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("double jump");
             totalPowerups = totalPowerups + 1;
             _jumpLevel++;
+            PickupPowerup();//Get rid of this if doublejump is finished;
 
         }
         else if (percentile >= 74 && percentile <= 85 && _damageLevel < _damageMax)//base damage
@@ -185,6 +193,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Fire");
             _fire = true;
             totalPowerups = totalPowerups + 1;
+            PickupPowerup();//Get rid of this if fire is finished;
 
         }
         else if (percentile >= 89 && percentile <= 93 && _electric != true)//electric
@@ -193,6 +202,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("electro");
             _electric = true;
             totalPowerups = totalPowerups + 1;
+            PickupPowerup();//Get rid of this if electric is finished;
 
         }
         else if (percentile >= 94 && percentile <= 98 && _poison != true)//poison
@@ -201,6 +211,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("poison");
             _poison = true;
             totalPowerups = totalPowerups + 1;
+            PickupPowerup();//Get rid of this if poison is finished;
 
         }
         else if (percentile >= 99 && percentile <= 100 && _explosive != true)//explosive
@@ -209,6 +220,7 @@ public class GameManager : MonoBehaviour
             _explosive = true;
             Debug.Log("explode");
             totalPowerups = totalPowerups + 1;
+            PickupPowerup();//Get rid of this if explosive is finished;
 
         }
         else
@@ -229,6 +241,11 @@ public class GameManager : MonoBehaviour
 
 
 
+    }
+
+    public void assignMostrecentenemy(GameObject Recent)
+    {
+        _displayEnemy = Recent;
     }
 
 }

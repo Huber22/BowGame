@@ -15,12 +15,19 @@ public class ShootArrow : MonoBehaviour
     public float baseDamage=1;
     public GameObject arrowPrefab;
     public GameObject firePoint;
+    public GameObject firePoint2;
+    public GameObject firePoint3;
+    public float multiarrow = 0;
     public Slider forceSlider;
     public GameObject displayArrow;
+    public GameObject displayArrow2;
+    public GameObject displayArrow3;
     // Start is called before the first frame update
     void Start()
     {
         arrowforce = 20;
+        displayArrow2.SetActive(false);
+        displayArrow3.SetActive(false);
         
     }
 
@@ -33,6 +40,16 @@ public class ShootArrow : MonoBehaviour
         if (Time.time >= _nextfire)
         {
             displayArrow.SetActive(true);
+            if (multiarrow > 0)
+            {
+                displayArrow2.SetActive(true);
+                if (multiarrow > 1)
+                {
+                    displayArrow3.SetActive(true);
+                }
+
+
+            }
         }
         if (Input.GetMouseButton(0)&& arrowforce <= maxForce&& Time.time>=_nextfire){
 
@@ -46,9 +63,28 @@ public class ShootArrow : MonoBehaviour
             GameObject arrow = Instantiate(arrowPrefab, firePoint.transform.position, Quaternion.LookRotation(Camera.main.transform.forward));
             arrow.GetComponent<Arrow>().force = arrowforce;
             arrow.GetComponent<Arrow>().addedDamage = _damage+baseDamage;
-            arrowforce = 20;
+           
             _nextfire = Time.time+fireRate;
             displayArrow.SetActive(false);
+            
+
+            if (multiarrow > 0)
+            {
+                displayArrow2.SetActive(false);
+                GameObject arrow2 = Instantiate(arrowPrefab, firePoint2.transform.position, Quaternion.LookRotation(Camera.main.transform.forward));
+                arrow2.GetComponent<Arrow>().force = arrowforce;
+                arrow2.GetComponent<Arrow>().addedDamage = _damage + baseDamage;
+                if (multiarrow > 1)
+                {
+                    displayArrow3.SetActive(false);
+                    GameObject arrow3 = Instantiate(arrowPrefab, firePoint3.transform.position, Quaternion.LookRotation(Camera.main.transform.forward));
+                    arrow3.GetComponent<Arrow>().force = arrowforce;
+                    arrow3.GetComponent<Arrow>().addedDamage = _damage + baseDamage;
+                }
+
+                
+            }
+            arrowforce = 20;
 
         }
     }

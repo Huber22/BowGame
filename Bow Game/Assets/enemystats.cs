@@ -7,21 +7,22 @@ public class enemystats : MonoBehaviour
 {
 
     public GameObject powerUp;
-    [SerializeField] private float _maxhealth;
-    [SerializeField ] private float _health;
+    [SerializeField] public float _maxhealth;
+    [SerializeField ] public float _health;
     [SerializeField] private int _chance;
-    [SerializeField] private Slider _Hp;
+
+    GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
         _health = _maxhealth;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _Hp.maxValue = _maxhealth;
-        _Hp.value = _health;
+
         if (_health <= 0)
         {
             Die();
@@ -39,8 +40,11 @@ public class enemystats : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+
         Debug.Log(damage);
         _health = _health - damage;
+       
+        gameManager.assignMostrecentenemy(this.gameObject);
     }
 
 }
