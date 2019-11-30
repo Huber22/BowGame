@@ -87,8 +87,8 @@ public class GameManager : MonoBehaviour
 
         percentile = Random.Range(1, 101);
 
-        Debug.Log(percentile);
-        //max draw
+        //Debug.Log(percentile);
+        
         if (percentile >= 1 && percentile <= 13 && _drawRateLevel < _drawRateMax)//drawrate
         {
 
@@ -123,10 +123,11 @@ public class GameManager : MonoBehaviour
         }
         else if (percentile >= 34 && percentile <= 35 && _arrowLevel < _arrowMax)//arrows at once
         {
-            //TODO create multiarrow functionality
+            arrowUps.multiarrow++;
             Debug.Log("multiarrow");
             totalPowerups = totalPowerups + 1;
             _arrowLevel++;
+
 
         }
         else if (percentile >= 36 && percentile <= 45 && _healthLevel < _healthMax)//max health
