@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public PlayerMove moveUps;
     private GameObject _displayEnemy;
     public Slider recentHealth;
+    public Text recentName;
     public int maximumPowerups=0;
     public int totalPowerups = 0;
     public bool noMorePower=false;
@@ -77,8 +78,16 @@ public class GameManager : MonoBehaviour
     {
         if(_displayEnemy!= null)
         {
+            recentHealth.gameObject.SetActive(true);
+            recentName.gameObject.SetActive(true);
             recentHealth.maxValue = _displayEnemy.GetComponent<enemystats>()._maxhealth;
             recentHealth.value = _displayEnemy.GetComponent<enemystats>()._health;
+            recentName.text = _displayEnemy.name;
+        }
+        if (_displayEnemy == null)
+        {
+            recentName.gameObject.SetActive(false);
+            recentHealth.gameObject.SetActive(false);
         }
     }
 
