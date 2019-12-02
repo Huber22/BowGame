@@ -8,8 +8,8 @@ public class ShootArrow : MonoBehaviour
     public float maxForce;
     public float arrowforce;
     public float drawRate;
-    public float fireRate;
-    private float _nextfire;
+    public float fireRate;//how many seconds you want to wait
+    private float _nextfire;// the next time you will be able to do something
     private float _maxDamage;
     private float _damage;
     public float baseDamage=1;
@@ -51,7 +51,7 @@ public class ShootArrow : MonoBehaviour
 
             }
         }
-        if (Input.GetMouseButton(0)&& arrowforce <= maxForce&& Time.time>=_nextfire){
+        if (Input.GetMouseButton(0)&& arrowforce <= maxForce&& Time.time>=_nextfire){//if time has passed nextfire then do something
 
             arrowforce=arrowforce+drawRate*Time.deltaTime;
             _damage =arrowforce / 100f;
@@ -64,7 +64,7 @@ public class ShootArrow : MonoBehaviour
             arrow.GetComponent<Arrow>().force = arrowforce;
             arrow.GetComponent<Arrow>().addedDamage = _damage+baseDamage;
            
-            _nextfire = Time.time+fireRate;
+            _nextfire = Time.time+fireRate;//sets nextfire to be firerate seconds after current time
             displayArrow.SetActive(false);
             
 
